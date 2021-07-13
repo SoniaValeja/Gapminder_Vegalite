@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/LajishaRinshad/VA-CW2-ii-/main/gapminder.csv"
+  },
+  "title": {
+    "text": "Different graph showing anomalies of each variables against year and country."
+  },
+  "concat": [
+    {
+      "mark": {"type": "trail", "tooltip": true},
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"aggregate": "mean", "field": "gdp", "type": "quantitative"},
+        "color": {"field": "region", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "trail", "tooltip": true},
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"aggregate": "mean", "field": "gdp", "type": "quantitative"},
+        "color": {"field": "Country", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "bar", "tooltip": true},
+      "encoding": {
+        "x": {"field": "region", "type": "nominal"},
+        "y": {"aggregate": "mean", "field": "gdp", "type": "quantitative"},
+        "color": {"field": "region", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "bar", "tooltip": true},
+      "encoding": {
+        "x": {"field": "region", "type": "nominal"},
+        "y": {
+          "aggregate": "mean",
+          "field": "population",
+          "type": "quantitative"
+        },
+        "color": {"field": "region", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "line", "tooltip": true},
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {
+          "aggregate": "mean",
+          "field": "population",
+          "type": "quantitative"
+        },
+        "color": {"field": "Country", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {}
+}

@@ -1,0 +1,26 @@
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/ahlam-s/Vega-CW2-group-/main/gapminder.csv"
+  },
+  "mark": {
+    "type": "circle",
+    "opacity": 0.8,
+    "stroke": "black",
+    "tooltip": true,
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {"aggregate": "mean", "field": "fertility", "type": "quantitative"},
+    "y": {"aggregate": "mean", "field": "life", "type": "quantitative"},
+    "size": {
+      "aggregate": "mean",
+      "field": "gdp",
+      "type": "quantitative",
+      "title": "GDP",
+      "legend": {"clipHeight": 5},
+      "scale": {"rangeMax": 2000}
+    },
+    "color": {"field": "region"}
+  },
+  "config": {}
+}

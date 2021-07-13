@@ -1,0 +1,88 @@
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/LajishaRinshad/VA-CW2-ii-/main/gapminder.csv"
+  },
+  "transform": [
+    {"calculate": "datum.gdp/datum.population", "as": "per capita gdp"}
+  ],
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "mark": {"type": "trail", "tooltip": true},
+          "encoding": {
+            "x": {"field": "Year", "type": "temporal"},
+            "y": {"aggregate": "mean", "field": "gdp", "type": "quantitative"},
+            "color": {"field": "region", "type": "nominal"}
+          }
+        },
+        {
+          "mark": {
+            "type": "line",
+            "tooltip": true,
+            "interpolate": "step-after"
+          },
+          "encoding": {
+            "x": {"field": "Year", "type": "temporal"},
+            "y": {
+              "aggregate": "mean",
+              "field": "population",
+              "type": "quantitative"
+            },
+            "color": {"field": "region", "type": "nominal"}
+          }
+        },
+        {
+          "mark": {"type": "trail", "tooltip": true},
+          "encoding": {
+            "x": {"field": "Year", "type": "temporal"},
+            "y": {
+              "aggregate": "mean",
+              "field": "per capita gdp",
+              "type": "quantitative"
+            },
+            "color": {"field": "region", "type": "nominal"}
+          }
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "mark": {"type": "line", "tooltip": true},
+          "encoding": {
+            "x": {"field": "Year", "type": "temporal"},
+            "y": {"aggregate": "mean", "field": "life", "type": "quantitative"},
+            "color": {"field": "region", "type": "nominal"}
+          }
+        },
+        {
+          "mark": {"type": "area", "tooltip": true},
+          "encoding": {
+            "x": {"field": "Year", "type": "temporal"},
+            "y": {"aggregate": "mean", "field": "child_mortality"},
+            "color": {"field": "region"}
+          }
+        },
+        {
+          "mark": {
+            "type": "area",
+            "line": true,
+            "point": true,
+            "tooltip": true
+          },
+          "encoding": {
+            "x": {"field": "Year", "type": "temporal"},
+            "y": {
+              "aggregate": "mean",
+              "field": "fertility",
+              "type": "quantitative"
+            },
+            "color": {"field": "region", "type": "nominal"}
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}
